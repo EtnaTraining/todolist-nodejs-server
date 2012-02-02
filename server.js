@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 var db = mongoose.connect('mongodb://tcaland:s1stem1@staff.mongohq.com:10010/example');
 
-var movieModel = mongoose.model('movies', new mongoose.Schema({
+var Movie = mongoose.model('movies', new mongoose.Schema({
     title: String,
     year: Number
 }));
@@ -15,7 +15,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/movies', function (req, res) {
-    movieModel.find({}, function (err, movies) {
+    Movie.find({}, function (err, movies) {
         res.contentType('json');
         res.json({
             success: true,
@@ -25,7 +25,7 @@ app.get('/movies', function (req, res) {
 });
 
 app.put('/movies/:id', function(req, res){
-    movieModel.find({_id: req.params.id}, function (err, movies) {
+    Movie.find({_id: req.params.id}, function (err, movies) {
         // update db
         var movie = movies[0];
         movie.set(req.body);
