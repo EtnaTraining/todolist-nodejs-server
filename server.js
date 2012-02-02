@@ -40,6 +40,7 @@ app.put('/movies/:id', function(req, res){
 });
 
 app.post('/movies', function (req, res) {
+	console.log(req.body);
     var newMovie = new Movie();
     var newMovieData = req.body;
 
