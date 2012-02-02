@@ -45,14 +45,15 @@ app.post('/movies', function (req, res) {
 
     // remove the id which the client sends since it is a new Movie
     //delete newMovieData['_id'];
-    newMovie.set(newMovieData);
-    newMovie.save(function (err, movie) {
+	console.log(newMoviesData);
+    //newMovie.set(newMovieData);
+    //newMovie.save(function (err, movie) {
         res.contentType('json');
         res.json({
-            success: !err,
-            data: movie
+            success: 0,
+            data: "ciao"
         });
-    });
+    //});
 });
 
 
