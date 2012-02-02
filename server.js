@@ -52,21 +52,21 @@ app.put('/movies/:id', function(req, res){
 });
 
 app.post('/movies', function (req, res) {
-	console.log(req.body);
+	//console.log(req.body);
     var newMovie = new Movie();
     var newMovieData = req.body;
 
     // remove the id which the client sends since it is a new Movie
     //delete newMovieData['_id'];
-	console.log(newMovieData);
-    //newMovie.set(newMovieData);
-    //newMovie.save(function (err, movie) {
+	//console.log(newMovieData);
+    newMovie.set(newMovieData);
+    newMovie.save(function (err, movie) {
         res.contentType('json');
         res.json({
             success: 0,
-            data: "ciao"
+            data: movie
         });
-    //});
+    });
 });
 
 
