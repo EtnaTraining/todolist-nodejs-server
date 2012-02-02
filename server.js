@@ -1,5 +1,6 @@
 
-var app = require('express').createServer();
+var express = require('express'),
+	app = module.exports = express.createServer();
 var mongoose = require('mongoose');
 
 var db = mongoose.connect('mongodb://tcaland:s1stem1@staff.mongohq.com:10010/example');
