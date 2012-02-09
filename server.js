@@ -55,7 +55,7 @@ app.post('/:udid', function (req, res) {
 
     // remove the id which the client sends since it is a new Movie
     //delete newMovieData['_id'];
-    console.log(newTodoData);
+    console.log(newTodo);
     newTodo.set(newTodoData);
     newTodo.save(function (err, todo) {
         res.contentType('json');
