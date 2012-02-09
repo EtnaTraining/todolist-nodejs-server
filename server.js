@@ -3,7 +3,17 @@ var express = require('express'),
 	app = module.exports = express.createServer();
 var mongoose = require('mongoose');
 
-var db = mongoose.connect('mongodb://tcaland:s1stem1@staff.mongohq.com:10010/example');
+var db = mongoose.connect('mongodb://tcaland:todoL1st@staff.mongohq.com:10010/todolist');
+
+var Todo = mongoose.model('todos', new mongoose.Schema({
+	udid: String,
+	title: String,
+	location: String,
+	alarm: Boolean,
+	dueDate: Date,
+	path: String
+}));
+
 
 var Movie = mongoose.model('movies', new mongoose.Schema({
     title: String,
@@ -25,6 +35,39 @@ app.configure(function () {
 app.get('/', function(req, res) {
      res.send('ToDo List test 2!');
 });
+
+app.get('/:udid', function(req, res) {
+	Todo.find({udid:req.params.udid}, function (err, todos) {
+		res.contentType('json');
+		res.json({
+			success: true,
+			data: todos
+		});
+	});
+});
+
+app.post('/:udid', function (req, res) {
+    console.log(req.body);
+    var newTodo = new Todo();
+    var newTodoData = req.body;
+    newTodoData.udid = req.params.udid;
+
+    // remove the id which the client sends since it is a new Movie
+    //delete newMovieData['_id'];
+    console.log(newTodoData);
+    newTodo.set(newTodoData);
+    newTodo.save(function (err, todo) {
+        res.contentType('json');
+        res.json({
+            success: 0,
+            data: todo
+        });
+    });
+});
+
+
+
+ 
 
 app.get('/movies', function (req, res) {
     Movie.find({}, function (err, movies) {
