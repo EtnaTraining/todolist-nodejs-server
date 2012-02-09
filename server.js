@@ -3,7 +3,7 @@ var express = require('express'),
 	app = module.exports = express.createServer();
 var mongoose = require('mongoose');
 
-var db = mongoose.connect('mongodb://tcaland:todoL1st@staff.mongohq.com:10010/todolist');
+var db = mongoose.connect('mongodb://tcaland:todoL1st@staff.mongohq.com:10009/todolist');
 
 var Todo = mongoose.model('todos', new mongoose.Schema({
 	udid: String,
@@ -55,9 +55,12 @@ app.post('/:udid', function (req, res) {
 
     // remove the id which the client sends since it is a new Movie
     //delete newMovieData['_id'];
-    console.log(newTodo);
     newTodo.set(newTodoData);
+    console.log(newTodo);
     newTodo.save(function (err, todo) {
+	if (err) {
+		console.log(err);
+	}
         res.contentType('json');
         res.json({
             success: 0,
