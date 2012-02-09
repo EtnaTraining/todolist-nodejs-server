@@ -37,6 +37,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/:udid', function(req, res) {
+	console.log(req.params.udid);
 	Todo.find({udid:req.params.udid}, function (err, todos) {
 		res.contentType('json');
 		res.json({
