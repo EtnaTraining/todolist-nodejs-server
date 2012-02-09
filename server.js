@@ -23,7 +23,7 @@ app.configure(function () {
 
    
 app.get('/', function(req, res) {
-     res.send('ToDo List test!');
+     res.send('ToDo List test 2!');
 });
 
 app.get('/movies', function (req, res) {
