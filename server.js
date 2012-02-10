@@ -15,10 +15,6 @@ var Todo = mongoose.model('todos', new mongoose.Schema({
 }));
 
 
-var Movie = mongoose.model('movies', new mongoose.Schema({
-    title: String,
-    year: Number
-}));
 
 app.configure(function () {
     //app.set('views', __dirname + '/views');
