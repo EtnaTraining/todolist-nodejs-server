@@ -33,7 +33,8 @@ app.get('/', function(req, res) {
 });
 
 app.get('/:udid', function(req, res) {
-	console.log(req.params.udid);
+	console.log('GET: ');
+	console.log(req.params);
 	Todo.find({udid:req.params.udid}, function (err, todos) {
 		res.contentType('json');
 		res.json({
@@ -44,7 +45,8 @@ app.get('/:udid', function(req, res) {
 });
 
 app.post('/:udid', function (req, res) {
-    console.log(req.body);
+    console.log("POST: ");
+    //console.log(req.body);
     var newTodo = new Todo();
     var newTodoData = req.body;
     newTodoData.udid = req.params.udid;
