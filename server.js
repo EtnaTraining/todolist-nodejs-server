@@ -3,6 +3,7 @@ var express = require('express'),
 	app = module.exports = express.createServer();
 var mongoose = require('mongoose');
 
+// change the connection string below with your username/passwd and database
 var db = mongoose.connect('mongodb://username:password@staff.mongohq.com:10009/todolist');
 
 var Todo = mongoose.model('todos', new mongoose.Schema({
