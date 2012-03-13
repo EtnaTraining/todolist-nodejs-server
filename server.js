@@ -3,7 +3,7 @@ var express = require('express'),
 	app = module.exports = express.createServer();
 var mongoose = require('mongoose');
 
-var db = mongoose.connect('mongodb://tcaland:todoL1st@staff.mongohq.com:10009/todolist');
+var db = mongoose.connect('mongodb://username:password@staff.mongohq.com:10009/todolist');
 
 var Todo = mongoose.model('todos', new mongoose.Schema({
 	udid: String,
